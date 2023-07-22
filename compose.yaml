@@ -1,0 +1,17 @@
+services:
+  my_postgres:
+    image: 'postgres:latest'
+    container_name: kraski_postgres_db  # Произвольное имя контейнера
+    restart: always
+    environment:
+      - 'POSTGRES_DB=kraski_database'  # Произвольное имя базы данных
+      - 'POSTGRES_USER=user'    # Произвольное имя пользователя PostgreSQL
+      - 'POSTGRES_PASSWORD=password'  # Произвольный пароль для пользователя PostgreSQL
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+volumes:
+  pg_data:
+
