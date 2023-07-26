@@ -33,4 +33,7 @@ public class Goods {
     @Column(name = "available_quantity", nullable = false)
     private int availableQuantity;
 
+    @Column(name = "image_filename")
+    private String imageFilename;
+
 }

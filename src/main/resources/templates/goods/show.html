@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Show</title>
+</head>
+<body>
+<p th:text="${goods.getProductName() + ', ' + goods.getPrice() + ', ' + goods.getAvailableQuantity()}">VALUE</p>
+<img th:src="@{'/static/images/' + ${goods.getImageFilename()}}" alt=""/>
+<div>
+    <br/>
+    <hr/>
+    <a href="/goods">Back to catalog</a>
+</div>
+</body>
+</html>

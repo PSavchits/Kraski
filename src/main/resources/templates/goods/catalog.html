@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Goods Catalog</title>
+</head>
+<body>
+<div class="content">
+  <h1>List of Goods</h1>
+  <ul>
+    <li th:each="goods, index : ${allGoods}">
+      <span th:text="${goods.productName}"></span>,
+      <span th:text="${goods.description}"></span>,
+      <span th:text="${goods.availableQuantity}"></span>,
+      <img th:src="${imagePaths[__${index.index}__]}" alt="Product Image" />
+    </li>
+  </ul>
+  <hr/>
+</div>
+</body>
+</html>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -20,5 +21,10 @@ public class GoodsService {
 
     public List<Goods> findAll() {
         return goodsRepository.findAll();
+    }
+
+    public Goods findOne(int id){
+        Optional<Goods> foundGoods = goodsRepository.findById(id);
+        return foundGoods.orElse(null);
     }
 }

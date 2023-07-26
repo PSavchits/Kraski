@@ -7,3 +7,6 @@ CREATE TABLE Goods (
 );
 
 INSERT INTO goods(product_name, description, price, available_quantity) VALUES('Краска зелёная', '500мл', 7.5, 4);
+
+ALTER TABLE Goods
+    ADD COLUMN image_filename VARCHAR(255);
