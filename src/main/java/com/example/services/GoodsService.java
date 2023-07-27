@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -38,20 +39,49 @@ public class GoodsService {
         Goods savedGoods = goodsRepository.save(goods);
 
         if (!imageFile.isEmpty()) {
-            String imageName = "product_" + savedGoods.getId() + ".jpg";
+            String imageName = generateImageName(savedGoods.getId(), Objects.requireNonNull(imageFile.getOriginalFilename()));
             String imagePath = "src/main/resources/static/images";
             Path imageFilePath = Paths.get(imagePath, imageName);
-            Files.createDirectories(imageFilePath.getParent());
+            createImageDirectory(imageFilePath);
 
             try {
                 Files.write(imageFilePath, imageFile.getBytes());
                 savedGoods.setImageFilename(imageName);
                 goodsRepository.save(savedGoods);
             } catch (IOException e) {
-                //TODO handle errors
                 e.printStackTrace();
                 throw new IOException("Failed to save image: " + e.getMessage());
             }
+        }
+    }
+
+    @Transactional
+    public void updateProduct(Goods goods, MultipartFile imageFile) throws IOException {
+        if (!imageFile.isEmpty()) {
+            // Удаляем старое изображение, если оно существует
+            deleteImageIfExists(goods.getImageFilename());
+
+            // Сохраняем новое изображение
+            saveProduct(goods, imageFile);
+        } else {
+            goodsRepository.save(goods);
+        }
+    }
+
+    private String generateImageName(Integer goodsId, String originalFileName) {
+        String fileExtension = originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
+        return "product_" + goodsId + "." + fileExtension;
+    }
+
+    private void createImageDirectory(Path imageFilePath) throws IOException {
+        Files.createDirectories(imageFilePath.getParent());
+    }
+
+    private void deleteImageIfExists(String imageName) throws IOException {
+        if (imageName != null) {
+            String imagePath = "src/main/resources/static/images";
+            Path imageFilePath = Paths.get(imagePath, imageName);
+            Files.deleteIfExists(imageFilePath);
         }
     }
 }
