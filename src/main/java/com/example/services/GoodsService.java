@@ -40,7 +40,7 @@ public class GoodsService {
 
         if (!imageFile.isEmpty()) {
             String imageName = generateImageName(savedGoods.getId(), Objects.requireNonNull(imageFile.getOriginalFilename()));
-            String imagePath = "src/main/resources/static/images";
+            String imagePath = "static/images";
             Path imageFilePath = Paths.get(imagePath, imageName);
             createImageDirectory(imageFilePath);
 
@@ -79,7 +79,7 @@ public class GoodsService {
 
     private void deleteImageIfExists(String imageName) throws IOException {
         if (imageName != null) {
-            String imagePath = "src/main/resources/static/images";
+            String imagePath = "static/images";
             Path imageFilePath = Paths.get(imagePath, imageName);
             Files.deleteIfExists(imageFilePath);
         }

@@ -25,16 +25,8 @@ public class GoodsController {
         @GetMapping("/catalog")
         public String catalog(Model model) {
             List<Goods> allGoods = goodsService.findAll();
-            List<String> imagePaths = new ArrayList<>();
-
-            for (Goods goods : allGoods) {
-                String filename = goods.getImageFilename();
-                String imagePath = "/static/images/" + filename;
-                imagePaths.add(imagePath);
-            }
 
             model.addAttribute("allGoods", allGoods);
-            model.addAttribute("imagePaths", imagePaths);
 
             return "goods/catalog";
         }
