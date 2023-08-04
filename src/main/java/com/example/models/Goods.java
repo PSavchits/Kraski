@@ -1,5 +1,7 @@
 package com.example.models;
 
+import com.example.models.Category;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,8 +40,9 @@ public class Goods {
     @Column(name = "image_filename")
     private String imageFilename;
 
-    @Column(name = "category")
-    private String category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
+    private Category category;
 
     @Column(name = "date_added")
     @Temporal(TemporalType.DATE)

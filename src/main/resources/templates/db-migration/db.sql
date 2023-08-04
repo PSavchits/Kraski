@@ -7,7 +7,11 @@ CREATE TABLE Goods (
                        image_filename VARCHAR(255),
                        date_added DATE,
                        date_updated DATE,
-                       category VARCHAR(100)
+                       category_id INTEGER REFERENCES Categories(category_id)
 );
 
-INSERT INTO goods(product_name, description, price, available_quantity) VALUES('Краска зелёная', '500мл', 7.5, 4);
+CREATE TABLE Categories (
+                            category_id SERIAL PRIMARY KEY,
+                            category_name VARCHAR(100) NOT NULL,
+                            parent_category_id INTEGER REFERENCES Categories(category_id)
+);
