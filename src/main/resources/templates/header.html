@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Header</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+<!-- Шапка -->
+<header>
+  <div class="logo-and-icon">
+    <div class="logo-container">
+      <img class="logo" src="/static/images/Logo.png" alt=""> <!-- Логотип -->
+    </div>
+    <span class="gg-home-alt"></span> <!-- Иконка справа от логотипа -->
+  </div>
+
+  <!-- Центральная часть (поисковое поле) -->
+  <div class="search">
+    <label>
+      <input type="text" placeholder="Search">
+    </label>
+    <span class="gg-search"></span>
+  </div>
+
+  <!-- Правая часть (дополнительная информация) -->
+  <div class="login-link">
+    <a href="/login">
+      <span class="gg-profile"></span> <!-- Иконка -->
+      <span>Войти</span> <!-- Текст -->
+    </a>
+  </div>
+</header>
+</body>
+</html>
+

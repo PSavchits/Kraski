@@ -5,8 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 @Builder
@@ -35,5 +37,18 @@ public class Goods {
 
     @Column(name = "image_filename")
     private String imageFilename;
+
+    @Column(name = "category")
+    private String category;
+
+    @Column(name = "date_added")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date dateAdded;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "date_updated")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date dateUpdated;
 
 }

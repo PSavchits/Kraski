@@ -1,0 +1,187 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+
+/* Стили для шапки */
+header {
+    background: linear-gradient(245.59deg, #3d9559 0%, #38703d 28.53%, #133917 75.52%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    margin: 0;
+    height: 100px;
+}
+
+/* Стили для поискового поля */
+.search {
+    background-color: white;
+    padding: 5px 15px;
+    width: 400px;
+    text-align: center;
+    color: black;
+    border-radius: 20px; /* Добавим радиус скругления углов */
+    height: 30px; /* Измените высоту поля по желанию */
+    display: flex;
+    align-items: center;
+}
+
+.gg-search {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    right: 30px;
+    transform: scale(var(--ggs,1));
+    width: 15px;
+    height: 15px;
+    border: 2px solid;
+    border-radius: 100%;
+    margin-left: -4px;
+    margin-top: -4px
+}
+.gg-search::after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    border-radius: 3px;
+    width: 2px;
+    height: 8px;
+    background: currentColor;
+    transform: rotate(-45deg);
+    top: 10px;
+    left: 12px
+}
+
+/* Медиа-запрос для адаптивного дизайна (необязательно) */
+@media (max-width: 768px) {
+    .search {
+        width: 200px;
+    }
+}
+
+/* Остальные стили и классы */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    margin-left: 100px;
+}
+
+/* Стили для ссылки на Login */
+.login-link {
+    color: white;
+    text-decoration: none;
+}
+
+/* Стили для правой части (блок с временем работы, адресом и телефонами) */
+.right-content {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.gg-home-alt {
+    box-sizing: border-box;
+    position: absolute;
+    display: block;
+    color: white;
+    right: 230px; /* Отступ справа */
+    top: 50%; /* Выравнивание по вертикали */
+    transform: translateY(-50%); /* Выравнивание по вертикали */
+    width: 18px;
+    height: 14px;
+    border: 2px solid;
+    border-top: 0;
+    border-radius: 5px 5px 3px 3px;
+}
+.gg-home-alt::after,
+.gg-home-alt::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute
+}
+.gg-home-alt::before {
+    border-top: 2px solid;
+    border-left: 2px solid;
+    transform: rotate(45deg);
+    top: -5px;
+    border-radius: 3px;
+    width: 14px;
+    height: 14px;
+    left: 0
+}
+.gg-home-alt::after {
+    width: 6px;
+    height: 10px;
+    background: currentColor;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    left: 4px;
+    bottom: -2px
+}
+
+/* Стили для контейнера логотипа и иконки */
+.logo-and-icon {
+    position: relative; /* Добавим относительное позиционирование для контейнера */
+    display: flex;
+    align-items: center;
+}
+
+/* Стили для ссылки на страницу Login */
+.login-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 100px;
+    display: inline-flex;
+    align-items: center; /* Выравниваем элементы по нижней линии */
+
+}
+
+.gg-profile,
+.gg-profile::after,
+.gg-profile::before {
+    color: white;
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid;
+    border-radius: 100px
+}
+.gg-profile {
+    overflow: hidden;
+    transform: scale(var(--ggs,1));
+    width: 22px;
+    height: 22px;
+    position: relative;
+    margin-right: 5px; /* Отступ между иконкой и текстом */
+    vertical-align: middle; /* Выравнивание по вертикали */
+}
+.gg-profile::after,
+.gg-profile::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 8px;
+    height: 8px
+}
+.gg-profile::after {
+    border-radius: 200px;
+    top: 11px;
+    left: 0px;
+    width: 18px;
+    height: 18px
+}
+.login-link:hover {
+    background-color: transparent;
+}

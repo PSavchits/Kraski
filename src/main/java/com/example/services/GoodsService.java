@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -36,6 +37,7 @@ public class GoodsService {
 
     @Transactional
     public void saveProduct(Goods goods, MultipartFile imageFile) throws IOException {
+        goods.setDateAdded(new Date());
         Goods savedGoods = goodsRepository.save(goods);
 
         if (!imageFile.isEmpty()) {
@@ -57,6 +59,7 @@ public class GoodsService {
 
     @Transactional
     public void updateProduct(Goods goods, MultipartFile imageFile) throws IOException {
+        goods.setDateUpdated(new Date());
         if (!imageFile.isEmpty()) {
             // Удаляем старое изображение, если оно существует
             deleteImageIfExists(goods.getImageFilename());
