@@ -39,4 +39,8 @@ public class GoodsController {
 
         return "goods/show";
     }
+    @GetMapping()
+    public String main() {
+        return "/main";
+    }
 }
