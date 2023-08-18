@@ -54,4 +54,8 @@ public class Goods {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dateUpdated;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "good_attribute", referencedColumnName = "attributes_id")
+    private GoodsAttributes attributes;
+
 }

@@ -17,6 +17,15 @@
     <input type="number" id="availableQuantity" name="availableQuantity" th:value="${goods.availableQuantity}" required/><br>
     <label for="image">Image:</label>
     <input type="file" id="image" name="image"/><br>
+
+    <label for="attributes.color">Color:</label>
+    <input type="text" id="attributes.color" name="attributes.color" th:value="${attributes.color}" /><br>
+    <label for="attributes.country">Country:</label>
+    <input type="text" id="attributes.country" name="attributes.country" th:value="${attributes.country}" /><br>
+    <label for="attributes.length">Length:</label>
+    <input type="number" id="attributes.length" name="attributes.length" step="0.01" th:value="${attributes.length}" /><br>
+    <label for="attributes.material">Material:</label>
+    <input type="text" id="attributes.material" name="attributes.material" th:value="${attributes.material}" /><br>
     <input type="submit" value="Save Changes">
 </form>
 </body>

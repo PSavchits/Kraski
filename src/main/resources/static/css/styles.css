@@ -557,9 +557,10 @@ p {
 
 a {
     color: #43464d;
-    text-decoration: underline;
+    text-decoration: none;
     transition: opacity .2s;
     display: block;
+
 }
 
 a:hover {

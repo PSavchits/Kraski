@@ -8,6 +8,11 @@
 <body>
 <p th:text="${goods.getProductName() + ', ' + goods.getPrice() + ', ' + goods.getAvailableQuantity()}">VALUE</p>
 <img th:src="@{'/static/images/' + ${goods.getImageFilename()}}" alt=""/>
+<h2>Attributes:</h2>
+<p>Color: <span th:text="${goods.attributes.color}">N/A</span></p>
+<p>Country: <span th:text="${goods.attributes.country}">N/A</span></p>
+<p>Length: <span th:text="${goods.attributes.length}">N/A</span></p>
+<p>Material: <span th:text="${goods.attributes.material}">N/A</span></p>
 <div>
     <br/>
     <hr/>
