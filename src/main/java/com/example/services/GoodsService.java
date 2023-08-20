@@ -1,5 +1,6 @@
 package com.example.services;
 
+import com.example.models.Category;
 import com.example.models.Goods;
 import com.example.models.GoodsAttributes;
 import com.example.repositories.GoodsAttributesRepository;
@@ -44,15 +45,17 @@ public class GoodsService {
     }
 
     @Transactional
-    public void saveProduct(Goods goods, GoodsAttributes goodsAttributes,MultipartFile imageFile) throws IOException {
+    public void saveProduct(Goods goods, GoodsAttributes goodsAttributes, MultipartFile imageFile, Category selectedCategory) throws IOException {
         setDefaultDateAdded(goods);
 
-        GoodsAttributes savedAttributes = goodsAttributesRepository.save(goodsAttributes); // Сохраняем атрибуты
-        goods.setAttributes(savedAttributes); // Обновляем ссылку на атрибуты в товаре
+        GoodsAttributes savedAttributes = goodsAttributesRepository.save(goodsAttributes);
+        goods.setAttributes(savedAttributes);
 
-        Goods savedGoods = goodsRepository.save(goods); // Сохраняем товар
+        goods.setCategory(selectedCategory); // Связываем товар с выбранной категорией
 
-        updateImage(savedGoods, imageFile); // Сохраняем изображение
+        Goods savedGoods = goodsRepository.save(goods);
+
+        updateImage(savedGoods, imageFile);
     }
 
     @Transactional
@@ -64,6 +67,7 @@ public class GoodsService {
         existingGoods.setProductName(goods.getProductName());
         existingAttributes.setColor(goods.getAttributes().getColor());
         existingAttributes.setCountry(goods.getAttributes().getCountry());
+        //TODO заменить сеттеры на использование MapStruct
 
         GoodsAttributes savedAttributes = goodsAttributesRepository.save(existingAttributes);
 

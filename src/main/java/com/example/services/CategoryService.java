@@ -27,4 +27,8 @@ public class CategoryService {
         Optional<Category> categoryOptional = categoryRepository.findById(categoryId);
         return categoryOptional.orElse(null);
     }
+
+    public List<Category> getParentCategories() {
+        return categoryRepository.findByParentCategoryIdNotNull();
+    }
 }
