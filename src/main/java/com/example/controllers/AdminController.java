@@ -20,7 +20,6 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
 
-
     private final GoodsService goodsService;
 
     private final GoodsAttributesService goodsAttributesService;
@@ -33,8 +32,6 @@ public class AdminController {
         this.goodsAttributesService = goodsAttributesService;
         this.categoryService = categoryService;
     }
-
-
 
     @GetMapping("/goods/add")
     public String showAddProductForm(Model model) {
@@ -49,6 +46,8 @@ public class AdminController {
     public String editProduct(@PathVariable("id") int id, Model model) {
         Goods goods = goodsService.findOne(id);
         GoodsAttributes goodsAttributes = goodsAttributesService.getAttributesByGoodsId(id);
+        List<Category> categories = categoryService.getParentCategories(); // Получаем список всех категорий
+        model.addAttribute("categories", categories); // Передаем список категорий в модель
         model.addAttribute("goods", goods);
         model.addAttribute("attributes", goodsAttributes);
         return "goods/edit";
@@ -57,17 +56,13 @@ public class AdminController {
     @PostMapping("/edit/{id}")
     public String updateProduct(@PathVariable("id") int id,
                                 @ModelAttribute("goods") Goods goods,
+                                @RequestParam("category") int categoryId,
                                 @RequestParam("image") MultipartFile imageFile) throws IOException {
-        System.out.println("Before setting attributes in GoodsAttributes:");
-        System.out.println("Color: " + goods.getAttributes().getColor());
-        System.out.println("Country: " + goods.getAttributes().getCountry());
-        // ... другие атрибуты ...
 
+        Category selectedCategory = categoryService.getCategoryById(categoryId);
+        goods.setCategory(selectedCategory);
         goodsService.updateProduct(goods, imageFile, id);
 
-        System.out.println("After setting attributes in GoodsAttributes:");
-        System.out.println("Color: " + goods.getAttributes().getColor());
-        System.out.println("Country: " + goods.getAttributes().getCountry());
         return "redirect:/goods/catalog";
     }
 

@@ -24,5 +24,4 @@ public class GoodsAttributesService {
     public GoodsAttributes getAttributesByGoodsId(int id) {
         return goodsAttributesRepository.findById(id);
     }
-
 }

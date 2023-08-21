@@ -6,7 +6,6 @@ import com.example.models.GoodsAttributes;
 import com.example.repositories.GoodsAttributesRepository;
 import com.example.repositories.GoodsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,7 +17,6 @@ import java.nio.file.Paths;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -71,6 +69,7 @@ public class GoodsService {
 
         GoodsAttributes savedAttributes = goodsAttributesRepository.save(existingAttributes);
 
+        existingGoods.setCategory(goods.getCategory());
         existingGoods.setAttributes(savedAttributes);
 
         Goods updatedGoods = goodsRepository.save(existingGoods);
@@ -125,4 +124,3 @@ public class GoodsService {
         return goodsRepository.findByCategoryId(id);
     }
 }
-

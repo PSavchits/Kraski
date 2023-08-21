@@ -5,6 +5,7 @@
     <title>Add Product</title>
 </head>
 <body>
+<div th:replace="~{header :: body}"></div>
 <h1>Add New Product</h1>
 <form method="post" enctype="multipart/form-data" th:action="@{/admin/goods/add}">
     <label for="productName">Product Name:</label>
@@ -34,5 +35,6 @@
 
     <input type="submit" value="Add Product">
 </form>
+<div th:replace="~{footer :: body}"></div>
 </body>
 </html>

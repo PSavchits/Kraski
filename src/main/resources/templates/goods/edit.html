@@ -5,6 +5,7 @@
     <title>Edit Product</title>
 </head>
 <body>
+<div th:replace="~{header :: body}"></div>
 <h1>Edit Product</h1>
 <form method="post" enctype="multipart/form-data" th:action="@{/admin/edit/{id}(id=${goods.id})}">
     <label for="productName">Product Name:</label>
@@ -26,7 +27,14 @@
     <input type="number" id="attributes.length" name="attributes.length" step="0.01" th:value="${attributes.length}" /><br>
     <label for="attributes.material">Material:</label>
     <input type="text" id="attributes.material" name="attributes.material" th:value="${attributes.material}" /><br>
+
+    <label for="category">Category:</label>
+    <select id="category" name="category" required>
+        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}" th:selected="${category.id == goods.category.id}"></option>
+    </select><br>
+
     <input type="submit" value="Save Changes">
 </form>
+<div th:replace="~{footer :: body}"></div>
 </body>
 </html>
