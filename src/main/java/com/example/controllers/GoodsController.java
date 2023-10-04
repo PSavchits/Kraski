@@ -67,7 +67,17 @@ public class GoodsController {
         return "goods/show";
     }
     @GetMapping()
-    public String main() {
+    public String mainPage() {
         return "/main";
+    }
+
+    @GetMapping("/catalogPage")
+    public String catalogPage(Model model) {
+        List<Goods> allGoods = goodsService.findAll();
+
+        model.addAttribute("allGoods", allGoods);
+
+        return "goods/catalogPage";
+
     }
 }

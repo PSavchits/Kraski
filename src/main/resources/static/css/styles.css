@@ -2,6 +2,8 @@ html {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     font-family: sans-serif;
+    font-size: 62.5%;
+    overflow-x: hidden;
 }
 
 body {
@@ -145,10 +147,6 @@ td, th {
     font-weight: normal;
     line-height: 1;
     font-family: webflow-icons !important;
-}
-
-* {
-    box-sizing: border-box;
 }
 
 body {
@@ -352,7 +350,7 @@ textarea.w-input, textarea.w-select {
 }
 
 .w-col-4 {
-    width: 33.3333%;
+    width: 270px;
 }
 
 .w-col-6 {
@@ -624,6 +622,21 @@ img {
     padding-bottom: 14px;
 }
 
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    transition: filter 0.3s ease-in-out;
+}
+
+.image-container:hover img {
+    filter: brightness(50%); /* Затемнение изображения при наведении */
+}
+
 .navigation-items {
     flex: 1;
     justify-content: space-between;
@@ -713,6 +726,35 @@ img {
     bottom: -50%;
     left: auto;
     right: auto;
+    text-align: center;
+    z-index: 2;
+    transition: filter 0.9ms ease-in-out, font-size 0.9ms ease-in-out;
+}
+
+.paragraph span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 1;
+    transition: font-size 0.1ms ease-in-out;
+}
+
+.paragraph img {
+    max-width: 100%;
+    height: auto;
+}
+
+.paragraph:hover img {
+    filter: brightness(70%); /* Затемнение изображения при наведении */
+}
+
+.paragraph:hover span {
+    font-size: 20px; /* Увеличение размера шрифта при наведении */
 }
 
 .column {
@@ -769,6 +811,10 @@ img {
 
 @media screen and (max-width: 991px) {
 
+    html{
+        font-size: 55%;
+    }
+
     .button {
         justify-content: center;
     }
@@ -815,6 +861,7 @@ img {
     .blog-item {
         width: 80%;
     }
+
 
 }
 
@@ -938,3 +985,214 @@ img {
         display: flex;
     }
 }
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    outline: none; border:none;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+
+.container-catalog{
+    max-width: 1200px;
+    margin:0 auto;
+    padding:3rem 2rem;
+}
+
+.container-catalog .title{
+    font-size: 3.5rem;
+    color:#444;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.container-catalog .products-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap:2rem;
+}
+
+.container-catalog .products-container .product{
+    text-align: center;
+    padding:3rem 2rem;
+    background: #fff;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    outline: .1rem solid #ccc;
+    outline-offset: -1.5rem;
+    cursor: pointer;
+}
+
+.container-catalog .products-container .product:hover{
+    outline: .2rem solid #222;
+    outline-offset: 0;
+}
+
+.container-catalog .products-container .product img{
+    height: 25rem;
+}
+
+.container-catalog .products-container .product:hover img{
+    transform: scale(.9);
+}
+
+.container-catalog .products-container .product h3{
+    padding:.5rem 0;
+    font-size: 2rem;
+    color:#444;
+}
+
+.container-catalog .products-container .product:hover h3{
+    color:#27ae60;
+}
+
+.container-catalog .products-container .product .price{
+    font-size: 2rem;
+    color:#444;
+}
+
+
+
+
+@media (max-width:991px){
+
+    html{
+        font-size: 55%;
+    }
+
+}
+
+@media (max-width:450px){
+
+    html{
+        font-size: 50%;
+    }
+
+}
+
+
+.parent-category.active {
+    font-weight: bold; /* Применяем стили для активной родительской категории */
+}
+
+/* Стиль для списка дочерних категорий */
+.child-categories {
+    list-style: none;
+    margin-left: 20px; /* Отступ для дочерних категорий */
+    display: none; /* По умолчанию скрываем список дочерних категорий */
+}
+.child-categories.active {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 100%;
+}
+
+/* Стиль для активных (развернутых) дочерних категорий */
+.parent-category.active + .child-categories {
+    display: block; /* Показываем список дочерних категорий при активной родительской категории */
+}
+.category.active {
+    font-weight: bold;
+    position: relative;
+}
+.categories {
+    position: relative;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+.heading-2:hover {
+    font-weight: bold;
+}
+
+
+/* Обнуление стилей списка и элементов списка */
+nav ul,
+nav li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Стили для главного меню и его пунктов */
+nav > ul {
+    background-color: white;
+    margin-top: 10px
+}
+
+nav > ul > li {
+    position: relative;
+    border-bottom: none;
+    transition: margin-bottom 0.3s ease-in-out;
+    margin-top: -1px;
+}
+
+nav ul ul.active ~ li {
+    margin-bottom: 20px;
+}
+
+nav > ul > li:first-child {
+    border-top: none;
+}
+
+nav > ul > li:last-child {
+    border-bottom: none;
+}
+
+nav > ul > li > a {
+    display: block;
+    padding: 5px 1px 5px 5px;
+    color: black;
+    border: none;
+    text-decoration: none;
+}
+
+nav > ul > li:hover > a {
+    font-weight: bold;
+    text-decoration: underline;
+}
+/* Стили для подменю и его пунктов */
+nav ul ul {
+    display: none;
+    background-color: white;
+    z-index: 1;
+    position: relative;
+    top: 100%;
+    left: 0;
+}
+
+nav ul ul.active {
+    display: block;
+}
+
+nav ul ul li {
+    width: 100%;
+}
+
+nav ul ul > li {
+    position: relative;
+    border: none;
+}
+
+nav ul ul > li > a {
+    padding: 10px 20px;
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+nav ul ul > li > a:hover {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    text-decoration: underline;
+}
+

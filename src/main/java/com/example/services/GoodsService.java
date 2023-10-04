@@ -49,7 +49,7 @@ public class GoodsService {
         GoodsAttributes savedAttributes = goodsAttributesRepository.save(goodsAttributes);
         goods.setAttributes(savedAttributes);
 
-        goods.setCategory(selectedCategory); // Связываем товар с выбранной категорией
+        goods.setCategory(selectedCategory);
 
         Goods savedGoods = goodsRepository.save(goods);
 
@@ -84,7 +84,7 @@ public class GoodsService {
         }
     }
 
-    private void updateImage(Goods goods, MultipartFile imageFile) throws IOException {
+    public void updateImage(Goods goods, MultipartFile imageFile) throws IOException {
         if (!imageFile.isEmpty()) {
             deleteImageIfExists(goods.getImageFilename());
 

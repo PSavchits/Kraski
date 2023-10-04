@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <link href="/static/css/styles.css" rel="stylesheet" type="text/css" />
+  <script src="/static/js/script.js" defer></script>
+
+</head>
+<body>
+<div th:replace="~{header :: body}"></div>
+<div class="container-catalog">
+
+  <h3 class="title"> Каталог </h3>
+
+  <div class="products-container">
+    <li th:each="goods : ${allGoods}">
+      <div class="product" data-name="p-1">
+        <img th:src="@{${'/static/images/' + goods.imageFilename}}" alt="">
+        <h3><span th:text="${goods.productName}"></span></h3>
+        <div class="price"><span th:text="${goods.price}"></span></div>
+      </div>
+    </li>
+  </div>
+</div>
+<div th:replace="~{footer :: body}"></div>
+
+</body>
+</html>

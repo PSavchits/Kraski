@@ -1,10 +1,7 @@
 package com.example.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -12,6 +9,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "Categories")
 public class Category {
@@ -28,11 +27,9 @@ public class Category {
     @JoinColumn(name = "parent_category_id")
     private Category parentCategory;
 
-    // Если хотим добавить подкатегории
     @OneToMany(mappedBy = "parentCategory", fetch = FetchType.LAZY)
     private List<Category> subcategories;
 
-    // Если хотим добавить товары в категорию
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<Goods> goodsList;
 }

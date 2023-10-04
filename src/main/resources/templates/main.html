@@ -22,30 +22,52 @@
     <div class="container">
         <div class="w-row">
             <div class="w-col w-col-4">
-                <ul role="list">
-                    <li>Отделочные материалы</li>
-                    <li>Стройматериалы</li>
-                    <li>Инструменты и оборудование</li>
-                </ul>
+                <nav>
+                    <ul>
+                        <li><a href="/goods/catalog/1">Отделочные материалы</a>
+                            <ul class="submenu">
+                                <li><a href="#">Краски</a></li>
+                                <li><a href="#">Штукатурка</a></li>
+                                <li><a href="#">Грунтовка</a></li>
+                                <li><a href="#">Лаки</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/goods/catalog/2">Стройматериалы</a>
+                            <ul class="submenu">
+                                <li><a href="#">Крепежи</a></li>
+                                <li><a href="#">Цемент</a></li>
+                                <li><a href="#">Пены, герметики, клеи</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/goods/catalog/3">Инструменты и оборудование</a>
+                            <ul class="submenu">
+                                <li><a href="#">Перчатки</a></li>
+                                <li><a href="#">Очки строительные</a></li>
+                                <li><a href="#">Кисти</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
             </div>
+
             <div class="w-col w-col-8">
                 <div class="w-layout-grid grid-3">
-                    <a href="/goods/catalog/1" class="div-block">
+                    <a href="/goods/catalog/1" class="div-block image-container">
                         <img src="/static/images/otdelochn.png" loading="lazy" alt="" class="image" />
                         <p class="paragraph">
                             <span><strong>Отделочные материалы</strong></span>
                         </p>
                     </a>
-                    <a href="/goods/catalog/2" class="div-block">
+                    <a href="/goods/catalog/2" class="div-block image-container">
                         <img src="/static/images/stroymaterial.png" loading="lazy" alt="" class="image" />
                         <p class="paragraph">
                             <span class="text-span"><strong>Стройматериалы</strong></span>
                         </p>
                     </a>
-                    <a href="/goods/catalog/3" class="div-block">
+                    <a href="/goods/catalog/3" class="div-block image-container">
                         <img src="/static/images/instrument.png" loading="lazy" alt="" class="image" />
                         <p class="paragraph">
-                            <span><strong>Инструменты и <br />оборудование</strong></span>
+                            <span><strong>Инструменты и оборудование</strong></span>
                         </p>
                     </a>
                 </div>
@@ -54,5 +76,20 @@
     </div>
 </div>
 <div th:replace="~{footer :: body}"></div>
+<script>
+    const submenus = document.querySelectorAll(".submenu");
+
+    // Добавляем обработчик клика к родительским пунктам меню
+    submenus.forEach(submenu => {
+        const parentMenuItem = submenu.closest("li");
+        const parentLink = parentMenuItem.querySelector("a");
+
+        parentLink.addEventListener("click", (e) => {
+            e.preventDefault(); // Отменяем стандартное поведение ссылки
+            submenu.classList.toggle("active"); // Переключаем класс для отображения/скрытия подменю
+        });
+    });
+</script>
+
 </body>
 </html>
